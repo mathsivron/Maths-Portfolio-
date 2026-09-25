@@ -1,604 +1,1776 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Professional portfolio of Engr. Mathias Akuma Sarverun — Agricultural Engineering, Public Policy, Rural Development and Community Impact." />
-  <title>Engr. Mathias Akuma Sarverun | Professional Portfolio</title>
-
-  <style>
-    :root{
-      --navy:#0b1f33;
-      --navy-2:#102d47;
-      --green:#0f6b50;
-      --green-2:#178364;
-      --gold:#c9a34a;
-      --cream:#f7f5ef;
-      --white:#ffffff;
-      --ink:#172331;
-      --muted:#647181;
-      --line:#dfe5e8;
-      --shadow:0 20px 60px rgba(11,31,51,.10);
-      --radius:22px;
-      --max:1180px;
-    }
-
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      color:var(--ink);
-      background:var(--white);
-      line-height:1.65;
-      overflow-x:hidden;
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{width:min(var(--max),92%);margin:auto}
-
-    /* NAV */
-    header{
-      position:fixed;inset:0 0 auto;z-index:1000;
-      background:rgba(255,255,255,.88);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(223,229,232,.8);
-    }
-    nav{
-      height:76px;display:flex;align-items:center;justify-content:space-between;
-    }
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
-    .brand-mark{
-      width:42px;height:42px;border-radius:50%;
-      display:grid;place-items:center;
-      color:white;background:linear-gradient(135deg,var(--green),var(--navy));
-      box-shadow:0 8px 25px rgba(15,107,80,.25);
-    }
-    .brand span:last-child{font-size:.92rem;letter-spacing:.02em}
-    .nav-links{display:flex;gap:28px;align-items:center}
-    .nav-links a{font-size:.88rem;color:#42505d;transition:.25s}
-    .nav-links a:hover{color:var(--green)}
-    .menu{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer}
-
-    /* HERO */
-    .hero{
-      min-height:100vh;
-      padding:145px 0 90px;
-      display:grid;grid-template-columns:1.12fr .88fr;gap:70px;align-items:center;
-      background:
-        radial-gradient(circle at 85% 15%,rgba(201,163,74,.16),transparent 28%),
-        radial-gradient(circle at 10% 75%,rgba(15,107,80,.10),transparent 30%),
-        linear-gradient(135deg,#fff 0%,#f5f8f5 100%);
-      position:relative;overflow:hidden;
-    }
-    .hero::after{
-      content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(15,107,80,.12);
-      border-radius:50%;right:-180px;bottom:-230px;animation:float 9s ease-in-out infinite;
-    }
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:9px;
-      color:var(--green);font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;
-      margin-bottom:18px;
-    }
-    .eyebrow::before{content:"";width:32px;height:2px;background:var(--gold)}
-    h1{
-      font-size:clamp(3rem,6vw,5.6rem);
-      line-height:.98;letter-spacing:-.055em;color:var(--navy);max-width:780px;
-    }
-    .hero h1 em{font-style:normal;color:var(--green)}
-    .hero-sub{
-      margin:26px 0 32px;max-width:690px;color:var(--muted);font-size:1.1rem;
-    }
-    .actions{display:flex;gap:14px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:8px;
-      padding:13px 20px;border-radius:999px;font-weight:750;font-size:.92rem;
-      transition:.25s;border:1px solid transparent;
-    }
-    .btn-primary{background:var(--navy);color:#fff;box-shadow:0 12px 28px rgba(11,31,51,.18)}
-    .btn-primary:hover{transform:translateY(-3px);background:var(--green)}
-    .btn-secondary{background:#fff;border-color:var(--line);color:var(--navy)}
-    .btn-secondary:hover{transform:translateY(-3px);border-color:var(--green)}
-
-    .hero-card{
-      min-height:520px;border-radius:34px;position:relative;overflow:hidden;
-      background:linear-gradient(145deg,var(--navy),#183c58);
-      box-shadow:var(--shadow);
-      padding:34px;color:#fff;
-      display:flex;flex-direction:column;justify-content:flex-end;
-      isolation:isolate;
-    }
-    .hero-card::before{
-      content:"";position:absolute;width:310px;height:310px;border-radius:50%;
-      border:1px solid rgba(255,255,255,.15);top:-80px;right:-70px;
-      box-shadow:0 0 0 45px rgba(255,255,255,.025),0 0 0 90px rgba(255,255,255,.02);
-      animation:spin 22s linear infinite;
-    }
-    .portrait-placeholder{
-      position:absolute;inset:0;
-      display:grid;place-items:center;
-      color:rgba(255,255,255,.25);font-size:6rem;font-weight:900;
-      letter-spacing:-.08em;
-    }
-    .hero-card-content{position:relative;z-index:2}
-    .hero-card .label{color:#b9d8cd;font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800}
-    .hero-card h2{font-size:1.8rem;line-height:1.15;margin:8px 0 10px}
-    .hero-card p{color:#d8e3ea;font-size:.92rem;max-width:470px}
-    .credentials{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-    .credential{
-      padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.13);font-size:.75rem;color:#e6eef2;
-    }
-
-    /* SECTION */
-    section{padding:105px 0}
-    .section-head{max-width:720px;margin-bottom:45px}
-    .section-kicker{color:var(--green);font-size:.75rem;text-transform:uppercase;letter-spacing:.15em;font-weight:850}
-    .section-title{font-size:clamp(2rem,4vw,3.35rem);line-height:1.08;color:var(--navy);letter-spacing:-.035em;margin-top:8px}
-    .section-copy{color:var(--muted);margin-top:15px}
-
-    /* ABOUT */
-    .about{background:var(--cream)}
-    .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}
-    .quote{
-      border-left:4px solid var(--gold);padding:5px 0 5px 24px;
-      font-size:1.4rem;line-height:1.4;color:var(--navy);font-weight:650;
-    }
-    .about-text{color:var(--muted)}
-    .about-text p+p{margin-top:18px}
-    .mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
-    .mini{background:#fff;padding:20px;border:1px solid var(--line);border-radius:17px}
-    .mini strong{display:block;color:var(--navy);font-size:1.4rem}
-    .mini span{font-size:.78rem;color:var(--muted)}
-
-    /* EXPERTISE */
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{
-      border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff;
-      transition:.3s;position:relative;overflow:hidden;
-    }
-    .card:hover{transform:translateY(-7px);box-shadow:var(--shadow);border-color:#c9d9d3}
-    .icon{
-      width:45px;height:45px;border-radius:14px;display:grid;place-items:center;
-      background:#edf6f2;color:var(--green);font-weight:900;margin-bottom:20px;
-    }
-    .card h3{font-size:1.08rem;color:var(--navy);margin-bottom:8px}
-    .card p{color:var(--muted);font-size:.9rem}
-
-    /* IMPACT */
-    .impact{background:var(--navy);color:#fff}
-    .impact .section-title{color:#fff}
-    .impact .section-copy{color:#b9c8d2}
-    .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .impact-card{
-      padding:28px;border:1px solid rgba(255,255,255,.12);border-radius:20px;
-      background:rgba(255,255,255,.045);
-    }
-    .impact-number{font-size:2.2rem;font-weight:850;color:#fff;letter-spacing:-.04em}
-    .impact-card h3{margin-top:5px;font-size:1rem}
-    .impact-card p{color:#aebec9;font-size:.82rem;margin-top:6px}
-
-    /* PROJECTS */
-    .projects{background:#fff}
-    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-    .project{
-      padding:30px;border-radius:24px;background:#f8faf9;border:1px solid var(--line);
-      transition:.3s;
-    }
-    .project:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-    .project-tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--green);font-weight:850}
-    .project h3{font-size:1.35rem;color:var(--navy);margin:10px 0 8px}
-    .project p{color:var(--muted);font-size:.9rem}
-    .project-meta{margin-top:20px;display:flex;gap:9px;flex-wrap:wrap}
-    .pill{padding:6px 10px;background:#fff;border:1px solid var(--line);border-radius:999px;font-size:.72rem;color:#53616d}
-
-    /* JOURNEY */
-    .journey{background:var(--cream)}
-    .timeline{position:relative;max-width:900px}
-    .timeline::before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:#d8dfdc}
-    .timeline-item{position:relative;padding:0 0 38px 42px}
-    .timeline-dot{position:absolute;left:0;top:6px;width:20px;height:20px;border-radius:50%;background:var(--green);border:5px solid var(--cream)}
-    .timeline-year{font-size:.75rem;color:var(--green);font-weight:850;letter-spacing:.1em}
-    .timeline h3{font-size:1.2rem;color:var(--navy);margin:3px 0}
-    .timeline p{color:var(--muted);font-size:.9rem}
-
-    /* CONTACT */
-    .contact{background:#fff}
-    .contact-box{
-      background:linear-gradient(135deg,var(--green),#0b5944);
-      border-radius:30px;padding:55px;color:#fff;
-      display:flex;align-items:center;justify-content:space-between;gap:40px;
-      box-shadow:var(--shadow);
-    }
-    .contact-box h2{font-size:clamp(2rem,4vw,3rem);line-height:1.05;letter-spacing:-.04em}
-    .contact-box p{color:#d8eee7;margin-top:12px;max-width:620px}
-    .contact-box .btn{background:#fff;color:var(--navy)}
-
-    footer{background:var(--navy);color:#b7c4cc;padding:30px 0}
-    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:.78rem}
-    .footer-name{color:#fff;font-weight:750}
-
-    /* ANIMATION */
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
-    .reveal.visible{opacity:1;transform:none}
-    @keyframes float{50%{transform:translateY(-18px) rotate(4deg)}}
-    @keyframes spin{to{transform:rotate(360deg)}}
-
-    @media(max-width:900px){
-      .nav-links{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;padding:18px 4%;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}
-      .nav-links.open{display:flex}
-      .menu{display:block}
-      .hero{grid-template-columns:1fr;padding-top:125px}
-      .hero-card{min-height:390px}
-      .about-grid{grid-template-columns:1fr;gap:35px}
-      .cards{grid-template-columns:repeat(2,1fr)}
-      .impact-grid{grid-template-columns:repeat(2,1fr)}
-      .contact-box{flex-direction:column;align-items:flex-start}
-    }
-
-    @media(max-width:600px){
-      section{padding:75px 0}
-      .hero{padding-bottom:65px}
-      .hero-card{min-height:350px}
-      .cards,.project-grid,.impact-grid{grid-template-columns:1fr}
-      .mini-grid{grid-template-columns:1fr}
-      .footer-inner{flex-direction:column;align-items:flex-start}
-      h1{font-size:clamp(2.8rem,15vw,4.2rem)}
-      .contact-box{padding:35px 27px}
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <div class="container">
-    <nav>
-      <a class="brand" href="#home" aria-label="Engr. Mathias Akuma Sarverun home">
-        <span class="brand-mark">SA</span>
-        <span>Mathias Akuma Sarverun</span>
-      </a>
-
-      <button class="menu" id="menuBtn" aria-label="Open navigation">☰</button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#expertise">Expertise</a>
-        <a href="#impact">Impact</a>
-        <a href="#projects">Projects</a>
-        <a href="#journey">Journey</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="container" style="display:contents">
-      <div class="hero-copy reveal">
-        <div class="eyebrow">Professional Portfolio</div>
-        <h1>Engineering <em>development</em> through policy, projects & people.</h1>
-        <p class="hero-sub">
-          Engr. Mathias Akuma Sarverun is an agricultural engineer and public-policy
-          practitioner working across rural infrastructure, development, project
-          implementation and community transformation.
-        </p>
-
-        <div class="actions">
-          <a class="btn btn-primary" href="#projects">Explore Portfolio →</a>
-          <a class="btn btn-secondary" href="#contact">Professional Enquiry</a>
-        </div>
-      </div>
-
-      <div class="hero-card reveal">
-        <div class="portrait-placeholder">MAS</div>
-        <div class="hero-card-content">
-          <div class="label">Current Professional Role</div>
-          <h2>Principal Agricultural Engineer</h2>
-          <p>Federal Ministry of Agriculture and Food Security, Abuja, Nigeria.</p>
-          <div class="credentials">
-            <span class="credential">B.Eng.</span>
-            <span class="credential">M.Eng.</span>
-            <span class="credential">MPP</span>
-            <span class="credential">COREN</span>
-            <span class="credential">MNIAE</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="section-kicker">01 — Profile</div>
-        <h2 class="section-title">Where engineering meets development practice.</h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="quote reveal">
-          “To serve and dignify humanity in a manner that pleases God and matches my natural and professional capabilities.”
-        </div>
-
-        <div class="about-text reveal">
-          <p>
-            Engr. Mathias Akuma Sarverun combines training in agricultural engineering,
-            farm power and machinery engineering, public policy, economic development
-            and leadership.
-          </p>
-          <p>
-            His professional record includes rural infrastructure surveys and design,
-            BEME preparation, project implementation, monitoring and evaluation,
-            inspection, valuation and payment certification.
-          </p>
-
-          <div class="mini-grid">
-            <div class="mini"><strong>2013+</strong><span>Federal public-sector experience</span></div>
-            <div class="mini"><strong>36</strong><span>Nigerian states visited</span></div>
-            <div class="mini"><strong>3</strong><span>Core professional degrees</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERTISE -->
-  <section id="expertise">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="section-kicker">02 — Expertise</div>
-        <h2 class="section-title">An interdisciplinary development toolkit.</h2>
-        <p class="section-copy">
-          A professional foundation combining engineering, policy, project delivery and community engagement.
-        </p>
-      </div>
-
-      <div class="cards">
-        <article class="card reveal">
-          <div class="icon">01</div>
-          <h3>Agricultural Engineering</h3>
-          <p>Farm power and machinery, agricultural and environmental engineering, and technical problem solving.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="icon">02</div>
-          <h3>Rural Infrastructure</h3>
-          <p>Infrastructure reconnaissance, design, BEME preparation, inspection, valuation and certification.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="icon">03</div>
-          <h3>Public Policy</h3>
-          <p>Public policy, economic development, leadership and policy implementation perspectives.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="icon">04</div>
-          <h3>Project Management</h3>
-          <p>Project implementation, monitoring and evaluation, field reporting and stakeholder coordination.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="icon">05</div>
-          <h3>Community Development</h3>
-          <p>Community engagement, mobilization, needs assessment and development-oriented initiatives.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="icon">06</div>
-          <h3>Public Administration</h3>
-          <p>Experience with public-service procedures, budgeting, procurement, PPP and inter-agency collaboration.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- IMPACT -->
-  <section class="impact" id="impact">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="section-kicker" style="color:#b9d8cd">03 — Community Impact</div>
-        <h2 class="section-title">Professional work with a community dimension.</h2>
-        <p class="section-copy">
-          Selected documented interventions from the supplied professional portfolio.
-        </p>
-      </div>
-
-      <div class="impact-grid">
-        <div class="impact-card reveal">
-          <div class="impact-number">₦650M+</div>
-          <h3>Mini-grid project</h3>
-          <p>Documented value of the Chito community mini-grid solar electrification project.</p>
-        </div>
-
-        <div class="impact-card reveal">
-          <div class="impact-number">3</div>
-          <h3>Solar boreholes</h3>
-          <p>Facilitated potable-water infrastructure interventions.</p>
-        </div>
-
-        <div class="impact-card reveal">
-          <div class="impact-number">6 km</div>
-          <h3>Access road</h3>
-          <p>Tse-Akendeve–Chito earth road with culverts and drainage.</p>
-        </div>
-
-        <div class="impact-card reveal">
-          <div class="impact-number">15</div>
-          <h3>Scholarship beneficiaries</h3>
-          <p>Students recorded as beneficiaries of the Sarverun Legacy Scholarship Scheme.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="projects" id="projects">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="section-kicker">04 — Selected Projects</div>
-        <h2 class="section-title">From infrastructure needs to practical interventions.</h2>
-      </div>
-
-      <div class="project-grid">
-        <article class="project reveal">
-          <div class="project-tag">Education</div>
-          <h3>Sarverun Legacy Academy</h3>
-          <p>
-            An education initiative established to improve proximity to qualitative
-            education and contribute to literacy development in Torov and surrounding communities.
-          </p>
-          <div class="project-meta">
-            <span class="pill">Chito</span>
-            <span class="pill">Education</span>
-            <span class="pill">Community Development</span>
-          </div>
-        </article>
-
-        <article class="project reveal">
-          <div class="project-tag">Energy</div>
-          <h3>Chito Community Mini-Grid</h3>
-          <p>
-            Facilitated a mini-grid solar electrification project serving Chito community
-            and environs, documented at a value exceeding ₦650 million.
-          </p>
-          <div class="project-meta">
-            <span class="pill">Solar Energy</span>
-            <span class="pill">Rural Electrification</span>
-          </div>
-        </article>
-
-        <article class="project reveal">
-          <div class="project-tag">Water</div>
-          <h3>Solar-Powered Boreholes</h3>
-          <p>
-            Facilitated three solar-powered boreholes at NKST Church Chito,
-            NKST Church Ututu and Tse-Akendeve village.
-          </p>
-          <div class="project-meta">
-            <span class="pill">Water Access</span>
-            <span class="pill">Rural Development</span>
-          </div>
-        </article>
-
-        <article class="project reveal">
-          <div class="project-tag">Road Infrastructure</div>
-          <h3>Community Road Initiatives</h3>
-          <p>
-            Facilitated the Tse-Akendeve–Chito road intervention and initiated the
-            United Communities for Sakera Chito Vaase Road Project.
-          </p>
-          <div class="project-meta">
-            <span class="pill">Road Access</span>
-            <span class="pill">Community Mobilization</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- JOURNEY -->
-  <section class="journey" id="journey">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="section-kicker">05 — Professional Journey</div>
-        <h2 class="section-title">A career built across engineering, policy and development.</h2>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <span class="timeline-dot"></span>
-          <div class="timeline-year">2010</div>
-          <h3>B.Eng. Agricultural & Environmental Engineering</h3>
-          <p>University of Agriculture, Makurdi.</p>
-        </div>
-
-        <div class="timeline-item reveal">
-          <span class="timeline-dot"></span>
-          <div class="timeline-year">2013 — PRESENT</div>
-          <h3>Federal Ministry of Agriculture and Food Security</h3>
-          <p>Professional experience covering rural infrastructure, project implementation and public-sector development functions.</p>
-        </div>
-
-        <div class="timeline-item reveal">
-          <span class="timeline-dot"></span>
-          <div class="timeline-year">2016</div>
-          <h3>Master of Public Policy</h3>
-          <p>Park Chung Hee School of Policy and Saemaul, Yeungnam University, Republic of Korea.</p>
-        </div>
-
-        <div class="timeline-item reveal">
-          <span class="timeline-dot"></span>
-          <div class="timeline-year">2024</div>
-          <h3>Master of Engineering</h3>
-          <p>Federal University of Technology, Minna — Agricultural and Bio-Resources Engineering, Farm Power and Machinery Engineering.</p>
-        </div>
-
-        <div class="timeline-item reveal">
-          <span class="timeline-dot"></span>
-          <div class="timeline-year">2024</div>
-          <h3>PSPS Alumni Impact Recognition</h3>
-          <p>Third prize winner in the PSPS Alumni Impact Contest, Yeungnam University, Republic of Korea.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="contact-box reveal">
-        <div>
-          <div class="section-kicker" style="color:#d5eee6">06 — Professional Engagement</div>
-          <h2>Let's connect around development, policy and practical impact.</h2>
-          <p>
-            For professional enquiries, institutional collaboration, development
-            partnerships or speaking engagements, use the contact details below.
-          </p>
-        </div>
-
-        <a class="btn" href="mailto:msarverun@ymail.com">Get in touch →</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="container footer-inner">
-    <div><span class="footer-name">Engr. Mathias Akuma Sarverun</span> · Professional Portfolio</div>
-    <div>Agricultural Engineering · Public Policy · Rural Development</div>
-  </div>
-</footer>
-
-<script>
-  // Mobile navigation
-  const menuBtn = document.getElementById("menuBtn");
-  const navLinks = document.getElementById("navLinks");
-
-  menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-  });
-
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => navLinks.classList.remove("open"));
-  });
-
-  // Scroll reveal animation
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Professional portfolio of Engr. Mathias Akuma Sarverun: agricultural engineering, public policy, rural development and infrastructure."
+    />
+    <meta name="theme-color" content="#102a43" />
+    <meta
+      property="og:title"
+      content="Engr. M. A. Sarverun | Public Policy, Agriculture & Rural Development"
+    />
+    <meta
+      property="og:description"
+      content="A professional portfolio connecting engineering, policy, infrastructure and community development."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://example.com/" />
+    <title>
+      Engr. M. A. Sarverun | Public Policy, Agriculture & Rural Development
+    </title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:opsz,wght@5..120,600;5..120,700&display=swap");
+      :root {
+        --ink: #102a43;
+        --ink-2: #183b56;
+        --forest: #176b5b;
+        --sage: #dbe8df;
+        --paper: #f8f6f0;
+        --sand: #eee9de;
+        --gold: #bd8b2e;
+        --text: #344a5f;
+        --muted: #637586;
+        --line: #d9ded9;
+        --white: #fff;
+        --radius: 16px;
+        --shadow: 0 18px 45px rgba(16, 42, 67, 0.09);
+        --max: 1200px;
       }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-</script>
-
-</body>
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 86px;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--text);
+        font:
+          400 16px/1.65 "DM Sans",
+          Arial,
+          sans-serif;
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        font: inherit;
+      }
+      img {
+        max-width: 100%;
+      }
+      .container {
+        width: min(calc(100% - 48px), var(--max));
+        margin: auto;
+      }
+      .skip {
+        position: fixed;
+        left: 12px;
+        top: -70px;
+        z-index: 10000;
+        padding: 10px 14px;
+        background: var(--white);
+        color: var(--ink);
+        border: 2px solid var(--forest);
+      }
+      .skip:focus {
+        top: 12px;
+      }
+      .eyebrow {
+        font:
+          500 0.72rem/1 "DM Mono",
+          monospace;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--forest);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .eyebrow:before {
+        content: "";
+        height: 1px;
+        width: 25px;
+        background: currentColor;
+      }
+      .section {
+        padding: 104px 0;
+      }
+      .section-heading {
+        max-width: 720px;
+        margin-bottom: 44px;
+      }
+      .section-heading h2 {
+        margin: 13px 0 0;
+        font:
+          600 clamp(2.25rem, 4.4vw, 4.25rem)/1.04 "Playfair Display",
+          Georgia,
+          serif;
+        letter-spacing: -0.04em;
+        color: var(--ink);
+      }
+      .section-heading p {
+        max-width: 620px;
+        margin: 16px 0 0;
+        color: var(--muted);
+      }
+      .btn {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 11px 18px;
+        border: 1px solid transparent;
+        font-size: 0.86rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        transition:
+          transform 0.2s,
+          background 0.2s,
+          border-color 0.2s,
+          box-shadow 0.2s;
+        cursor: pointer;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 9px 20px rgba(16, 42, 67, 0.13);
+      }
+      .btn-primary {
+        background: var(--ink);
+        color: var(--white);
+      }
+      .btn-primary:hover {
+        background: var(--forest);
+      }
+      .btn-secondary {
+        border-color: var(--ink);
+        color: var(--ink);
+        background: transparent;
+      }
+      .btn-light {
+        background: var(--white);
+        color: var(--ink);
+      }
+      .btn:focus-visible,
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 3px;
+      }
+      header {
+        height: 78px;
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 20;
+        background: rgba(248, 246, 240, 0.93);
+        border-bottom: 1px solid transparent;
+        backdrop-filter: blur(12px);
+      }
+      header.scrolled {
+        border-color: var(--line);
+      }
+      nav {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--ink);
+        font-size: 0.82rem;
+        font-weight: 700;
+        line-height: 1.15;
+      }
+      .brand-mark {
+        height: 39px;
+        width: 39px;
+        display: grid;
+        place-items: center;
+        background: var(--ink);
+        color: var(--white);
+        font:
+          500 0.8rem "DM Mono",
+          monospace;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 0.76rem;
+        font-weight: 700;
+        color: #4a5d6e;
+      }
+      .nav-links > a {
+        position: relative;
+      }
+      .nav-links > a:not(.nav-cv):after {
+        content: "";
+        height: 1px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+        background: var(--forest);
+        transform: scaleX(0);
+        transition: transform 0.2s;
+      }
+      .nav-links > a:hover:after {
+        transform: scaleX(1);
+      }
+      .nav-cv {
+        padding: 9px 12px;
+        color: var(--white);
+        background: var(--forest);
+      }
+      .menu {
+        display: none;
+        padding: 7px;
+        border: 0;
+        background: transparent;
+        color: var(--ink);
+        font-size: 1.4rem;
+      }
+      .hero {
+        min-height: 720px;
+        padding: 147px 0 78px;
+        position: relative;
+        background: linear-gradient(115deg, var(--paper) 0 63%, #e4ebe4 63%);
+        overflow: hidden;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        width: 430px;
+        height: 430px;
+        border-radius: 50%;
+        border: 1px solid rgba(23, 107, 91, 0.16);
+        right: -170px;
+        bottom: -155px;
+      }
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.14fr 0.86fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .hero h1 {
+        max-width: 720px;
+        margin: 18px 0 0;
+        color: var(--ink);
+        font:
+          600 clamp(3.3rem, 6vw, 6rem)/0.99 "Playfair Display",
+          Georgia,
+          serif;
+        letter-spacing: -0.065em;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--forest);
+      }
+      .hero-copy > p {
+        max-width: 620px;
+        margin: 25px 0 31px;
+        color: var(--text);
+        font-size: 1.1rem;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .hero-note {
+        margin-top: 42px;
+        display: flex;
+        gap: 24px;
+        color: var(--muted);
+        font-size: 0.76rem;
+      }
+      .hero-note span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .hero-note i {
+        width: 7px;
+        height: 7px;
+        background: var(--gold);
+        display: inline-block;
+      }
+      .profile-panel {
+        min-height: 510px;
+        position: relative;
+        background: var(--ink);
+        color: var(--white);
+        padding: 34px;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .profile-panel:before {
+        content: "";
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        top: -180px;
+        right: -115px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        box-shadow:
+          0 0 0 44px rgba(255, 255, 255, 0.03),
+          0 0 0 88px rgba(255, 255, 255, 0.02);
+      }
+      .profile-monogram {
+        position: absolute;
+        top: 55px;
+        left: 31px;
+        font:
+          600 clamp(6rem, 13vw, 10rem)/0.75 "Playfair Display",
+          serif;
+        letter-spacing: -0.12em;
+        color: rgba(255, 255, 255, 0.08);
+      }
+      .profile-content {
+        position: relative;
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        padding-top: 17px;
+        width: 100%;
+      }
+      .profile-content small {
+        color: #b9d4c8;
+        font:
+          500 0.69rem "DM Mono",
+          monospace;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .profile-content h2 {
+        font:
+          600 1.75rem/1.13 "Playfair Display",
+          serif;
+        margin: 10px 0;
+      }
+      .profile-content p {
+        margin: 0;
+        color: #d1dde2;
+        font-size: 0.88rem;
+      }
+      .credentials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 20px;
+      }
+      .credentials span {
+        padding: 5px 8px;
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        font:
+          500 0.7rem "DM Mono",
+          monospace;
+      }
+      .intro {
+        background: var(--white);
+      }
+      .intro-grid {
+        display: grid;
+        grid-template-columns: 0.72fr 1.28fr;
+        gap: 76px;
+      }
+      .quote {
+        border-left: 3px solid var(--gold);
+        padding: 4px 0 5px 22px;
+        color: var(--ink);
+        font:
+          600 1.42rem/1.4 "Playfair Display",
+          serif;
+      }
+      .intro-content p {
+        margin: 0;
+        color: var(--text);
+      }
+      .intro-content p + p {
+        margin-top: 16px;
+      }
+      .fact-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        margin-top: 33px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .fact {
+        padding: 18px;
+        background: var(--white);
+      }
+      .fact strong {
+        display: block;
+        color: var(--ink);
+        font:
+          600 1.45rem "Playfair Display",
+          serif;
+      }
+      .fact span {
+        font-size: 0.76rem;
+        color: var(--muted);
+        line-height: 1.3;
+        display: block;
+      }
+      .expertise {
+        background: var(--sand);
+      }
+      .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: rgba(16, 42, 67, 0.13);
+        border: 1px solid rgba(16, 42, 67, 0.13);
+      }
+      .expertise-card {
+        min-height: 220px;
+        padding: 25px;
+        background: var(--sand);
+        transition:
+          background 0.25s,
+          transform 0.25s;
+      }
+      .expertise-card:hover {
+        background: var(--white);
+        transform: translateY(-4px);
+      }
+      .expertise-card b {
+        display: block;
+        margin-bottom: 40px;
+        color: var(--gold);
+        font:
+          500 0.72rem "DM Mono",
+          monospace;
+      }
+      .expertise-card h3 {
+        margin: 0;
+        color: var(--ink);
+        font-size: 1.02rem;
+        line-height: 1.25;
+      }
+      .expertise-card p {
+        margin: 9px 0 0;
+        color: var(--muted);
+        font-size: 0.83rem;
+        line-height: 1.5;
+      }
+      .projects {
+        background: var(--white);
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      .project {
+        display: flex;
+        flex-direction: column;
+        min-height: 412px;
+        padding: 30px;
+        border: 1px solid var(--line);
+        background: var(--white);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+      .project:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+      }
+      .project-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+      }
+      .project-type,
+      .status {
+        font:
+          500 0.68rem "DM Mono",
+          monospace;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .project-type {
+        color: var(--forest);
+      }
+      .status {
+        color: var(--gold);
+        border: 1px solid #dfc998;
+        padding: 4px 6px;
+        background: #fffaf0;
+      }
+      .project h3 {
+        margin: 26px 0 11px;
+        color: var(--ink);
+        font:
+          600 1.72rem/1.16 "Playfair Display",
+          serif;
+      }
+      .project > p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.91rem;
+      }
+      .project-details {
+        margin: 21px 0 25px;
+        padding-top: 17px;
+        border-top: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 13px;
+      }
+      .project-details div {
+        font-size: 0.76rem;
+        color: var(--muted);
+      }
+      .project-details b {
+        display: block;
+        margin-bottom: 2px;
+        color: var(--ink);
+        font:
+          500 0.64rem "DM Mono",
+          monospace;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .project .text-link {
+        margin-top: auto;
+        color: var(--forest);
+        font-size: 0.84rem;
+        font-weight: 700;
+      }
+      .text-link:after {
+        content: " →";
+      }
+      .case-dialog {
+        border: 0;
+        padding: 0;
+        width: min(780px, calc(100% - 32px));
+        max-height: calc(100% - 40px);
+        background: var(--white);
+        color: var(--text);
+        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.3);
+      }
+      .case-dialog::backdrop {
+        background: rgba(10, 29, 44, 0.72);
+      }
+      .dialog-inner {
+        padding: 42px;
+      }
+      .dialog-close {
+        float: right;
+        border: 0;
+        background: transparent;
+        color: var(--ink);
+        font-size: 1.65rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .dialog-inner h2 {
+        margin: 18px 40px 16px 0;
+        color: var(--ink);
+        font:
+          600 2.25rem/1.1 "Playfair Display",
+          serif;
+      }
+      .case-label {
+        color: var(--forest);
+        font:
+          500 0.72rem "DM Mono",
+          monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+      .case-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 27px;
+      }
+      .case-block {
+        padding: 16px;
+        background: var(--paper);
+        border-left: 2px solid var(--sage);
+      }
+      .case-block h3 {
+        margin: 0 0 5px;
+        color: var(--ink);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .case-block p {
+        margin: 0;
+        font-size: 0.87rem;
+        line-height: 1.55;
+      }
+      .case-note {
+        margin: 22px 0 0;
+        padding: 12px 15px;
+        background: #fff8e7;
+        color: #705b2e;
+        font-size: 0.81rem;
+      }
+      .experience {
+        background: var(--ink);
+        color: var(--white);
+      }
+      .experience .section-heading h2 {
+        color: var(--white);
+      }
+      .experience .section-heading p {
+        color: #bfccd5;
+      }
+      .experience .eyebrow {
+        color: #b6d5c6;
+      }
+      .timeline {
+        border-top: 1px solid rgba(255, 255, 255, 0.22);
+      }
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 34px;
+        padding: 29px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.17);
+      }
+      .timeline-period {
+        color: #b6d5c6;
+        font:
+          500 0.75rem "DM Mono",
+          monospace;
+        letter-spacing: 0.06em;
+      }
+      .timeline-item h3 {
+        margin: 0;
+        color: var(--white);
+        font-size: 1.15rem;
+      }
+      .timeline-item h3 span {
+        font-weight: 400;
+        color: #bfcbd3;
+      }
+      .timeline-item p {
+        max-width: 700px;
+        margin: 8px 0 0;
+        color: #c4d0d8;
+        font-size: 0.88rem;
+      }
+      .timeline-item ul {
+        padding-left: 18px;
+        margin: 10px 0 0;
+        color: #c4d0d8;
+        font-size: 0.84rem;
+      }
+      .timeline-item li + li {
+        margin-top: 3px;
+      }
+      .credentials-section {
+        background: var(--paper);
+      }
+      .credential-layout {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 25px;
+      }
+      .info-panel {
+        padding: 30px;
+        border: 1px solid var(--line);
+        background: var(--white);
+      }
+      .info-panel h3 {
+        margin: 0 0 20px;
+        color: var(--ink);
+        font:
+          600 1.45rem "Playfair Display",
+          serif;
+      }
+      .record {
+        padding: 14px 0;
+        border-top: 1px solid var(--line);
+      }
+      .record:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+      }
+      .record b {
+        display: block;
+        color: var(--ink);
+        font-size: 0.91rem;
+      }
+      .record span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.79rem;
+      }
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tag {
+        padding: 7px 9px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        color: var(--text);
+        font-size: 0.77rem;
+      }
+      .impact {
+        background: var(--forest);
+        color: var(--white);
+      }
+      .impact .section-heading h2 {
+        color: var(--white);
+      }
+      .impact .section-heading p {
+        color: #d7e7df;
+      }
+      .impact .eyebrow {
+        color: #e1c57f;
+      }
+      .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .impact-card {
+        padding: 24px;
+        background: var(--forest);
+      }
+      .impact-card .impact-number {
+        color: var(--white);
+        font:
+          600 2.15rem/1 "Playfair Display",
+          serif;
+      }
+      .impact-card h3 {
+        margin: 12px 0 6px;
+        font-size: 0.95rem;
+      }
+      .impact-card p {
+        margin: 0;
+        color: #d2e3dc;
+        font-size: 0.79rem;
+        line-height: 1.5;
+      }
+      .impact-footnote {
+        margin: 25px 0 0;
+        color: #d2e3dc;
+        font-size: 0.78rem;
+      }
+      .thought {
+        background: var(--white);
+      }
+      .resource-list {
+        border-top: 1px solid var(--line);
+      }
+      .resource {
+        display: grid;
+        grid-template-columns: 120px 1fr auto;
+        gap: 24px;
+        align-items: center;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .resource-meta {
+        color: var(--forest);
+        font:
+          500 0.7rem "DM Mono",
+          monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .resource h3 {
+        margin: 0;
+        color: var(--ink);
+        font-size: 1rem;
+      }
+      .resource p {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 0.83rem;
+      }
+      .resource a {
+        color: var(--forest);
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+      .resource a:after {
+        content: " ↗";
+      }
+      .contact {
+        padding: 104px 0;
+        background: var(--paper);
+      }
+      .contact-box {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 45px;
+        padding: 46px;
+        background: var(--ink);
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+      .contact-box h2 {
+        max-width: 700px;
+        margin: 12px 0 0;
+        font:
+          600 clamp(2.2rem, 4vw, 3.85rem)/1.05 "Playfair Display",
+          serif;
+        letter-spacing: -0.04em;
+      }
+      .contact-box p {
+        max-width: 670px;
+        margin: 18px 0 0;
+        color: #c7d4da;
+      }
+      .contact-actions {
+        align-self: end;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .contact-details {
+        margin: 22px 0 0;
+        color: #cfdbdf;
+        font-size: 0.85rem;
+      }
+      .contact-details a {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+      footer {
+        padding: 27px 0;
+        background: #0b2338;
+        color: #b6c4cc;
+        font-size: 0.76rem;
+      }
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+      }
+      .footer-inner b {
+        color: var(--white);
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (max-width: 1050px) {
+        .nav-links {
+          gap: 13px;
+          font-size: 0.71rem;
+        }
+        .hero-grid {
+          gap: 35px;
+        }
+        .expertise-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 800px) {
+        .container {
+          width: min(calc(100% - 32px), var(--max));
+        }
+        .menu {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 78px;
+          left: 0;
+          right: 0;
+          padding: 17px 24px 21px;
+          background: var(--paper);
+          border-bottom: 1px solid var(--line);
+          box-shadow: var(--shadow);
+          flex-direction: column;
+          align-items: stretch;
+          gap: 2px;
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .nav-links a {
+          padding: 9px 0;
+        }
+        .nav-links .nav-cv {
+          text-align: center;
+          margin-top: 6px;
+        }
+        .hero {
+          padding-top: 116px;
+          background: linear-gradient(155deg, var(--paper) 0 55%, #e4ebe4 55%);
+        }
+        .hero-grid,
+        .intro-grid,
+        .credential-layout,
+        .contact-box {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: clamp(3.1rem, 10vw, 5.25rem);
+        }
+        .profile-panel {
+          min-height: 375px;
+        }
+        .intro-grid {
+          gap: 38px;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+        .timeline-item {
+          grid-template-columns: 120px 1fr;
+          gap: 16px;
+        }
+        .contact-actions {
+          align-self: start;
+        }
+        .section {
+          padding: 78px 0;
+        }
+        .contact {
+          padding: 78px 0;
+        }
+      }
+      @media (max-width: 520px) {
+        .brand span:last-child {
+          max-width: 145px;
+        }
+        .hero {
+          min-height: auto;
+          padding-bottom: 54px;
+        }
+        .hero-note {
+          gap: 12px;
+          flex-direction: column;
+        }
+        .profile-panel {
+          padding: 25px;
+          min-height: 330px;
+        }
+        .section-heading {
+          margin-bottom: 32px;
+        }
+        .fact-row,
+        .impact-grid {
+          grid-template-columns: 1fr;
+        }
+        .expertise-grid {
+          grid-template-columns: 1fr;
+        }
+        .expertise-card {
+          min-height: 170px;
+        }
+        .project {
+          padding: 23px;
+          min-height: 0;
+        }
+        .project h3 {
+          margin-top: 20px;
+        }
+        .timeline-item {
+          grid-template-columns: 1fr;
+          gap: 7px;
+        }
+        .resource {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+        .resource > a {
+          margin-top: 6px;
+        }
+        .case-grid {
+          grid-template-columns: 1fr;
+        }
+        .dialog-inner {
+          padding: 26px 22px;
+        }
+        .footer-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+        .contact-box {
+          padding: 30px 24px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        *,
+        *:before,
+        *:after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header id="site-header">
+      <div class="container">
+        <nav aria-label="Primary navigation">
+          <a
+            class="brand"
+            href="#home"
+            aria-label="Engr. Mathias Akuma Sarverun home"
+            ><span class="brand-mark" aria-hidden="true">MS</span
+            ><span>Mathias Akuma<br />Sarverun</span></a
+          >
+          <button
+            class="menu"
+            id="menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+            aria-label="Open navigation"
+          >
+            ☰
+          </button>
+          <div class="nav-links" id="nav-links">
+            <a href="#home">Home</a><a href="#about">About</a
+            ><a href="#expertise">Expertise</a><a href="#projects">Projects</a
+            ><a href="#experience">Experience</a><a href="#thought">Insights</a
+            ><a href="#impact">Impact</a><a href="#contact">Contact</a
+            ><a class="nav-cv" href="assets/mathias-sarverun-cv.txt" download
+              >Download CV</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero" id="home">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <div class="eyebrow">
+              Public Policy · Agriculture · Infrastructure
+            </div>
+            <h1>
+              Engineering <em>practical pathways</em> for rural transformation.
+            </h1>
+            <p>
+              Engr. Mathias Akuma Sarverun is an agricultural engineer and
+              public-policy practitioner whose work connects rural
+              infrastructure, project implementation and community development.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#projects"
+                >Explore my work <span aria-hidden="true">↓</span></a
+              ><a
+                class="btn btn-secondary"
+                href="assets/mathias-sarverun-cv.txt"
+                download
+                >Download CV <span aria-hidden="true">↓</span></a
+              >
+            </div>
+            <div class="hero-note">
+              <span><i></i> Abuja, Nigeria</span
+              ><span><i></i> Development-focused practice</span>
+            </div>
+          </div>
+          <aside
+            class="profile-panel reveal"
+            aria-label="Professional credentials"
+          >
+            <div class="profile-monogram" aria-hidden="true">MAS</div>
+            <div class="profile-content">
+              <small>Current professional role</small>
+              <h2>Principal Agricultural Engineer</h2>
+              <p>
+                Federal Ministry of Agriculture and Food Security, Abuja,
+                Nigeria.
+              </p>
+              <div class="credentials">
+                <span>B.Eng.</span><span>M.Eng.</span><span>MPP</span
+                ><span>COREN</span><span>MNIAE</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+      <section class="section intro" id="about">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div class="eyebrow">01 — Professional profile</div>
+            <h2>Policy-aware engineering, grounded in development practice.</h2>
+          </div>
+          <div class="intro-grid">
+            <blockquote class="quote reveal">
+              “To serve and dignify humanity in a manner that pleases God and
+              matches my natural and professional capabilities.”
+            </blockquote>
+            <div class="intro-content reveal">
+              <p>
+                Engr. Sarverun combines training in agricultural engineering,
+                farm power and machinery engineering, public policy, economic
+                development and leadership.
+              </p>
+              <p>
+                His professional record includes rural-infrastructure surveys
+                and design, BEME preparation, project implementation, monitoring
+                and evaluation, inspection, valuation and payment certification.
+              </p>
+              <div
+                class="fact-row"
+                aria-label="Professional profile highlights"
+              >
+                <div class="fact">
+                  <strong>2013+</strong
+                  ><span>Federal public-sector experience</span>
+                </div>
+                <div class="fact">
+                  <strong>36</strong><span>Nigerian states visited</span>
+                </div>
+                <div class="fact">
+                  <strong>3</strong><span>Core professional degrees</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section expertise" id="expertise">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div class="eyebrow">02 — Areas of expertise</div>
+            <h2>An interdisciplinary development toolkit.</h2>
+            <p>
+              Capabilities drawn from engineering practice, public
+              administration and community-focused delivery.
+            </p>
+          </div>
+          <div class="expertise-grid">
+            <article class="expertise-card reveal">
+              <b>01</b>
+              <h3>Agricultural Engineering</h3>
+              <p>
+                Farm power and machinery, agricultural and environmental
+                engineering, and technical problem solving.
+              </p>
+            </article>
+            <article class="expertise-card reveal">
+              <b>02</b>
+              <h3>Rural Infrastructure</h3>
+              <p>
+                Reconnaissance, design, BEME preparation, inspection, valuation
+                and certification.
+              </p>
+            </article>
+            <article class="expertise-card reveal">
+              <b>03</b>
+              <h3>Public Policy</h3>
+              <p>
+                Public policy, economic development, leadership and
+                implementation perspectives.
+              </p>
+            </article>
+            <article class="expertise-card reveal">
+              <b>04</b>
+              <h3>Project Management</h3>
+              <p>
+                Implementation, monitoring and evaluation, field reporting and
+                coordination.
+              </p>
+            </article>
+            <article class="expertise-card reveal">
+              <b>05</b>
+              <h3>Community Development</h3>
+              <p>
+                Engagement, mobilisation, needs assessment and
+                development-oriented initiatives.
+              </p>
+            </article>
+            <article class="expertise-card reveal">
+              <b>06</b>
+              <h3>Stakeholder Engagement</h3>
+              <p>
+                Collaboration across public-service procedures, procurement, PPP
+                and inter-agency work.
+              </p>
+            </article>
+            <article class="expertise-card reveal">
+              <b>07</b>
+              <h3>Policy Advocacy</h3>
+              <p>
+                Interest in linking technical knowledge, institutions and
+                practical development responses.
+              </p>
+            </article>
+            <article class="expertise-card reveal">
+              <b>08</b>
+              <h3>Institutional Development</h3>
+              <p>
+                Public-administration experience supporting structured project
+                and programme delivery.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section projects" id="projects">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div class="eyebrow">03 — Selected work</div>
+            <h2>From infrastructure needs to practical interventions.</h2>
+            <p>
+              Selected concepts and facilitated interventions. Case studies
+              distinguish documented activity from expected outcomes.
+            </p>
+          </div>
+          <div class="projects-grid">
+            <article class="project reveal">
+              <div class="project-top">
+                <span class="project-type">Education</span
+                ><span class="status">Community initiative</span>
+              </div>
+              <h3>Sarverun Legacy Academy</h3>
+              <p>
+                An education initiative established to improve proximity to
+                qualitative education and contribute to literacy development in
+                Torov and surrounding communities.
+              </p>
+              <div class="project-details">
+                <div><b>Location</b>Chito / Torov area</div>
+                <div><b>Focus</b>Education access</div>
+                <div><b>Role</b>Initiator</div>
+                <div><b>Evidence</b>Portfolio record</div>
+              </div>
+              <button class="text-link case-button" data-case="academy">
+                View case study
+              </button>
+            </article>
+            <article class="project reveal">
+              <div class="project-top">
+                <span class="project-type">Energy</span
+                ><span class="status">Facilitated</span>
+              </div>
+              <h3>Chito Community Mini-Grid</h3>
+              <p>
+                Facilitated a mini-grid solar electrification project serving
+                Chito community and environs, documented at a value exceeding
+                ₦650 million.
+              </p>
+              <div class="project-details">
+                <div><b>Location</b>Chito</div>
+                <div><b>Focus</b>Rural electrification</div>
+                <div><b>Role</b>Facilitation</div>
+                <div><b>Status</b>Documented intervention</div>
+              </div>
+              <button class="text-link case-button" data-case="minigrid">
+                View case study
+              </button>
+            </article>
+            <article class="project reveal">
+              <div class="project-top">
+                <span class="project-type">Water</span
+                ><span class="status">Facilitated</span>
+              </div>
+              <h3>Solar-Powered Boreholes</h3>
+              <p>
+                Facilitated three solar-powered boreholes at NKST Church Chito,
+                NKST Church Ututu and Tse-Akendeve village.
+              </p>
+              <div class="project-details">
+                <div><b>Location</b>Chito, Ututu & Tse-Akendeve</div>
+                <div><b>Focus</b>Water access</div>
+                <div><b>Role</b>Facilitation</div>
+                <div><b>Status</b>Documented intervention</div>
+              </div>
+              <button class="text-link case-button" data-case="water">
+                View case study
+              </button>
+            </article>
+            <article class="project reveal">
+              <div class="project-top">
+                <span class="project-type">Infrastructure</span
+                ><span class="status">Mixed status</span>
+              </div>
+              <h3>Community Road Initiatives</h3>
+              <p>
+                Facilitated the Tse-Akendeve–Chito road intervention and
+                initiated the United Communities for Sakera Chito Vaase Road
+                Project.
+              </p>
+              <div class="project-details">
+                <div><b>Location</b>Tse-Akendeve–Chito</div>
+                <div><b>Focus</b>Rural access</div>
+                <div><b>Role</b>Facilitation / initiation</div>
+                <div><b>Status</b>Intervention & concept</div>
+              </div>
+              <button class="text-link case-button" data-case="roads">
+                View case study
+              </button>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section experience" id="experience">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div class="eyebrow">04 — Experience & learning</div>
+            <h2>A career across engineering, policy and development.</h2>
+            <p>
+              A concise timeline of verified qualifications, professional
+              service and recognition.
+            </p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item reveal">
+              <div class="timeline-period">2013 — Present</div>
+              <div>
+                <h3>
+                  Federal Ministry of Agriculture and Food Security
+                  <span>· Professional service</span>
+                </h3>
+                <p>
+                  Professional experience covering rural infrastructure, project
+                  implementation and public-sector development functions.
+                </p>
+                <ul>
+                  <li>Rural infrastructure surveys and design</li>
+                  <li>
+                    BEME preparation, inspection, valuation and payment
+                    certification
+                  </li>
+                  <li>Project monitoring, evaluation and field reporting</li>
+                </ul>
+              </div>
+            </article>
+            <article class="timeline-item reveal">
+              <div class="timeline-period">2024</div>
+              <div>
+                <h3>
+                  Master of Engineering
+                  <span>· Agricultural & Bio-Resources Engineering</span>
+                </h3>
+                <p>
+                  Farm Power and Machinery Engineering, Federal University of
+                  Technology, Minna.
+                </p>
+              </div>
+            </article>
+            <article class="timeline-item reveal">
+              <div class="timeline-period">2024</div>
+              <div>
+                <h3>PSPS Alumni Impact Recognition</h3>
+                <p>
+                  Third prize winner in the PSPS Alumni Impact Contest, Yeungnam
+                  University, Republic of Korea.
+                </p>
+              </div>
+            </article>
+            <article class="timeline-item reveal">
+              <div class="timeline-period">2016</div>
+              <div>
+                <h3>Master of Public Policy</h3>
+                <p>
+                  Park Chung Hee School of Policy and Saemaul, Yeungnam
+                  University, Republic of Korea.
+                </p>
+              </div>
+            </article>
+            <article class="timeline-item reveal">
+              <div class="timeline-period">2010</div>
+              <div>
+                <h3>B.Eng. Agricultural & Environmental Engineering</h3>
+                <p>University of Agriculture, Makurdi.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section credentials-section" id="credentials">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div class="eyebrow">05 — Credentials & development</div>
+            <h2>Technical formation with a public-policy perspective.</h2>
+          </div>
+          <div class="credential-layout">
+            <article class="info-panel reveal">
+              <h3>Education</h3>
+              <div class="record">
+                <b>M.Eng. Agricultural & Bio-Resources Engineering</b
+                ><span
+                  >Federal University of Technology, Minna · Farm Power and
+                  Machinery Engineering · 2024</span
+                >
+              </div>
+              <div class="record">
+                <b>Master of Public Policy</b
+                ><span
+                  >Park Chung Hee School of Policy and Saemaul, Yeungnam
+                  University, Republic of Korea · 2016</span
+                >
+              </div>
+              <div class="record">
+                <b>B.Eng. Agricultural & Environmental Engineering</b
+                ><span>University of Agriculture, Makurdi · 2010</span>
+              </div>
+            </article>
+            <article class="info-panel reveal">
+              <h3>Professional development</h3>
+              <div class="record">
+                <b>Registration & membership</b>
+                <div class="tag-list" style="margin-top: 10px">
+                  <span class="tag">COREN</span><span class="tag">MNIAE</span>
+                </div>
+              </div>
+              <div class="record">
+                <b>International exposure</b
+                ><span
+                  >Master of Public Policy study at Yeungnam University,
+                  Republic of Korea.</span
+                >
+              </div>
+              <div class="record">
+                <b>Awards & recognition</b
+                ><span>PSPS Alumni Impact Contest — third prize, 2024.</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section impact" id="impact">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div class="eyebrow">06 — Community impact</div>
+            <h2>Development work with a human dimension.</h2>
+            <p>
+              Documented initiatives and facilitated interventions presented
+              without extrapolating outcomes beyond the available record.
+            </p>
+          </div>
+          <div class="impact-grid">
+            <article class="impact-card reveal">
+              <div class="impact-number">₦650M+</div>
+              <h3>Mini-grid project</h3>
+              <p>
+                Documented value of the Chito community mini-grid solar
+                electrification project.
+              </p>
+            </article>
+            <article class="impact-card reveal">
+              <div class="impact-number">3</div>
+              <h3>Solar boreholes</h3>
+              <p>Facilitated potable-water infrastructure interventions.</p>
+            </article>
+            <article class="impact-card reveal">
+              <div class="impact-number">6 km</div>
+              <h3>Access road</h3>
+              <p>Tse-Akendeve–Chito earth road with culverts and drainage.</p>
+            </article>
+            <article class="impact-card reveal">
+              <div class="impact-number">15</div>
+              <h3>Scholarship beneficiaries</h3>
+              <p>
+                Students recorded as beneficiaries of the Sarverun Legacy
+                Scholarship Scheme.
+              </p>
+            </article>
+          </div>
+          <p class="impact-footnote">
+            Community-impact entries are drawn from the original portfolio
+            materials. “Facilitated” identifies professional or supported
+            interventions; independent initiative is indicated where documented.
+          </p>
+        </div>
+      </section>
+      <section class="section thought" id="thought">
+        <div class="container">
+          <div class="section-heading reveal">
+            <div class="eyebrow">07 — Documents & thought leadership</div>
+            <h2>A record built for further inquiry.</h2>
+            <p>
+              The original prototype did not include published articles or
+              policy briefs. This resource area retains the verified
+              professional summary and provides an extensible home for future
+              approved materials.
+            </p>
+          </div>
+          <div class="resource-list">
+            <article class="resource reveal">
+              <div class="resource-meta">CV · Download</div>
+              <div>
+                <h3>Professional CV summary</h3>
+                <p>
+                  A concise, downloadable record of the verified education, role
+                  and selected portfolio work currently available in this
+                  repository.
+                </p>
+              </div>
+              <a href="assets/mathias-sarverun-cv.txt" download>Download</a>
+            </article>
+            <article class="resource reveal">
+              <div class="resource-meta">Portfolio · View</div>
+              <div>
+                <h3>Selected project case studies</h3>
+                <p>
+                  Structured context for the community-development interventions
+                  represented on this site.
+                </p>
+              </div>
+              <a href="#projects">Browse</a>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="contact" id="contact">
+        <div class="container">
+          <div class="contact-box reveal">
+            <div>
+              <div class="eyebrow" style="color: #b6d5c6">
+                08 — Professional engagement
+              </div>
+              <h2>
+                Let's discuss policy, development and practical solutions.
+              </h2>
+              <p>
+                For professional enquiries, institutional collaboration,
+                development partnerships or speaking engagements, get in touch
+                directly.
+              </p>
+              <div class="contact-details">
+                Email:
+                <a href="mailto:msarverun@ymail.com">msarverun@ymail.com</a> ·
+                Location: Abuja, Nigeria
+              </div>
+            </div>
+            <div class="contact-actions">
+              <a class="btn btn-light" href="mailto:msarverun@ymail.com"
+                >Get in touch <span aria-hidden="true">→</span></a
+              ><a
+                class="btn btn-secondary"
+                style="color: #fff; border-color: #fff"
+                href="assets/mathias-sarverun-cv.txt"
+                download
+                >Download CV</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container footer-inner">
+        <div><b>Engr. Mathias Akuma Sarverun</b> · Professional Portfolio</div>
+        <div>
+          Public Policy · Agriculture · Rural Development · Infrastructure
+        </div>
+      </div>
+    </footer>
+    <dialog class="case-dialog" id="case-dialog" aria-labelledby="case-title">
+      <div class="dialog-inner">
+        <button
+          class="dialog-close"
+          type="button"
+          aria-label="Close case study"
+        >
+          ×
+        </button>
+        <div class="case-label" id="case-type"></div>
+        <h2 id="case-title"></h2>
+        <p id="case-intro"></p>
+        <div class="case-grid" id="case-grid"></div>
+        <p class="case-note">
+          This case study uses only details available in the original portfolio
+          prototype. No results or outcomes beyond that record are implied.
+        </p>
+      </div>
+    </dialog>
+    <script>
+      const cases = {
+        academy: {
+          type: "Education · Community initiative",
+          title: "Sarverun Legacy Academy",
+          intro:
+            "An education initiative established to improve proximity to qualitative education and contribute to literacy development in Torov and surrounding communities.",
+          blocks: [
+            [
+              "Challenge",
+              "Access to qualitative education for communities in the Torov area.",
+            ],
+            [
+              "Context",
+              "A community-development education initiative referenced in the original portfolio.",
+            ],
+            ["Intervention", "Establishment of the Sarverun Legacy Academy."],
+            [
+              "Approach",
+              "An initiative framed around education proximity and literacy development.",
+            ],
+            ["Stakeholders", "Torov and surrounding communities."],
+            [
+              "Expected contribution",
+              "The original record describes an intended contribution to literacy development; no impact figure is stated.",
+            ],
+          ],
+        },
+        minigrid: {
+          type: "Energy · Facilitated intervention",
+          title: "Chito Community Mini-Grid",
+          intro:
+            "A mini-grid solar electrification project serving Chito community and environs.",
+          blocks: [
+            ["Challenge", "Rural access to electricity in Chito and environs."],
+            ["Context", "Community solar-electrification intervention."],
+            ["Intervention", "Mini-grid solar electrification project."],
+            ["Role", "Facilitated intervention."],
+            ["Stakeholders", "Chito community and environs."],
+            [
+              "Documented value",
+              "The source portfolio records a value exceeding ₦650 million; it does not provide a measured outcome.",
+            ],
+          ],
+        },
+        water: {
+          type: "Water · Facilitated intervention",
+          title: "Solar-Powered Boreholes",
+          intro:
+            "A facilitated set of potable-water infrastructure interventions.",
+          blocks: [
+            [
+              "Challenge",
+              "Access to potable water in named community locations.",
+            ],
+            ["Context", "Rural water-infrastructure interventions."],
+            ["Intervention", "Three solar-powered boreholes."],
+            [
+              "Locations",
+              "NKST Church Chito, NKST Church Ututu and Tse-Akendeve village.",
+            ],
+            ["Role", "Facilitated intervention."],
+            [
+              "Outcomes",
+              "The original portfolio records the interventions but does not quantify outcomes.",
+            ],
+          ],
+        },
+        roads: {
+          type: "Infrastructure · Intervention & concept",
+          title: "Community Road Initiatives",
+          intro:
+            "Road-access work combining a facilitated intervention with a separately initiated road-project concept.",
+          blocks: [
+            ["Challenge", "Rural access and connectivity needs."],
+            ["Context", "Community road initiatives in the Chito area."],
+            [
+              "Intervention",
+              "Tse-Akendeve–Chito earth road with culverts and drainage.",
+            ],
+            ["Role", "Facilitated the Tse-Akendeve–Chito intervention."],
+            [
+              "Concept",
+              "Initiated the United Communities for Sakera Chito Vaase Road Project.",
+            ],
+            [
+              "Status",
+              "The road concept is presented as initiated/proposed, not as a completed outcome.",
+            ],
+          ],
+        },
+      };
+      const dialog = document.querySelector("#case-dialog");
+      const grid = document.querySelector("#case-grid");
+      document.querySelectorAll(".case-button").forEach((button) =>
+        button.addEventListener("click", () => {
+          const c = cases[button.dataset.case];
+          document.querySelector("#case-type").textContent = c.type;
+          document.querySelector("#case-title").textContent = c.title;
+          document.querySelector("#case-intro").textContent = c.intro;
+          grid.replaceChildren(
+            ...c.blocks.map(([h, p]) => {
+              const el = document.createElement("section");
+              el.className = "case-block";
+              el.innerHTML = `<h3>${h}</h3><p>${p}</p>`;
+              return el;
+            }),
+          );
+          dialog.showModal();
+        }),
+      );
+      document
+        .querySelector(".dialog-close")
+        .addEventListener("click", () => dialog.close());
+      const menu = document.querySelector("#menu"),
+        links = document.querySelector("#nav-links");
+      menu.addEventListener("click", () => {
+        const open = links.classList.toggle("open");
+        menu.setAttribute("aria-expanded", open);
+        menu.setAttribute(
+          "aria-label",
+          open ? "Close navigation" : "Open navigation",
+        );
+        menu.textContent = open ? "×" : "☰";
+      });
+      links.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          links.classList.remove("open");
+          menu.setAttribute("aria-expanded", "false");
+          menu.setAttribute("aria-label", "Open navigation");
+          menu.textContent = "☰";
+        }),
+      );
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          }),
+        { threshold: 0.08 },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+      window.addEventListener(
+        "scroll",
+        () =>
+          document
+            .querySelector("#site-header")
+            .classList.toggle("scrolled", scrollY > 8),
+        { passive: true },
+      );
+    </script>
+  </body>
 </html>

@@ -1,57 +1,55 @@
 # Engr. Mathias Akuma Sarverun — Professional Portfolio
 
-> **Agricultural Engineering | Public Policy | Rural Development | Infrastructure | Community Impact**
+A frontend-only professional portfolio for **Engr. Mathias Akuma Sarverun**, presenting a development-focused practice across agricultural engineering, public policy, rural development and infrastructure.
 
-## 1. Overview
+## What was retained and improved
 
-This repository contains the digital professional portfolio platform for **Engr. Mathias Akuma Sarverun**, Principal Agricultural Engineer, Federal Ministry of Agriculture and Food Security, Abuja.
+The site preserves the original prototype's verified professional profile, qualifications, public-sector experience, community initiatives, contact email and core portfolio figures. It redesigns the presentation into a more editorial, accessible single-page experience with:
 
-The portfolio transforms a conventional professional CV into an evidence-oriented digital platform covering:
+- Clear narrative flow: identity → expertise → selected work → experience → credentials → impact → resources → contact.
+- Responsive desktop and mobile navigation, including keyboard-accessible controls.
+- Dedicated project case-study dialogs that distinguish facilitation, concepts and documented details from outcomes.
+- Downloadable CV summary at `assets/mathias-sarverun-cv.txt`.
+- Semantic sections, focus states, skip link, reduced-motion support and lightweight scroll reveals.
+- SEO and Open Graph metadata in `index.html`.
 
-- Professional identity
-- Education
-- Career experience
-- Engineering expertise
-- Rural infrastructure
-- Public policy
-- Community development
-- Leadership
-- International exposure
-- Awards
-- Professional memberships
-- Development projects
+## Technology
 
-The source portfolio documents professional experience with the Federal Ministry of Agriculture and Food Security beginning in 2013, including rural infrastructure design, BEME preparation, inspection, valuation, payment certification and related project activities.
+This project deliberately retains the original lightweight architecture:
 
----
+- Plain HTML
+- CSS with responsive design tokens and media queries
+- Lightweight, dependency-free JavaScript
 
-# 2. Project Vision
+There is no build step, server, CMS or backend requirement.
 
-The platform is designed around the principle:
+## Run locally
 
-> **Knowledge → Policy → Engineering → Implementation → Community Impact**
+Open `index.html` directly in a browser, or serve the repository with any static-file server. For example:
 
-Its purpose is to demonstrate not only what the professional has studied or where he has worked, but also how technical and policy knowledge has been applied to real development challenges.
+```bash
+python3 -m http.server 8000
+```
 
----
+Then visit [http://localhost:8000](http://localhost:8000).
 
-# 3. Key Portfolio Areas
+## Project structure
 
 ```text
-Professional Identity
-        ↓
-Education & Credentials
-        ↓
-Professional Experience
-        ↓
-Technical Competencies
-        ↓
-Development Projects
-        ↓
-Community Impact
-        ↓
-Leadership & International Exposure
-        ↓
-Awards & Recognition
-        ↓
-Professional Engagement
+.
+├── index.html                         # Single-page portfolio UI, styles and interactions
+├── assets/
+│   └── mathias-sarverun-cv.txt        # Downloadable verified portfolio summary
+├── README.md                          # Project overview and local-run guidance
+└── SRD.md                             # Original software requirements document
+```
+
+## Content maintenance
+
+Portfolio text is intentionally limited to details present in the original prototype and SRD. Before adding project outcomes, publications, photography, social profiles or a full CV, verify the source material and update the corresponding content in `index.html` and `assets/mathias-sarverun-cv.txt`.
+
+## Remaining limitations
+
+- No approved professional portrait, project photography, social profile URL, or full CV PDF was included in the starting repository. The site therefore uses a typographic identity treatment and a downloadable text summary rather than inventing assets.
+- The contact action uses an email link only, keeping this release frontend-only.
+- The canonical URL is an intentional `https://example.com/` placeholder and should be replaced at deployment.
